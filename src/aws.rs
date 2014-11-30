@@ -15,11 +15,11 @@ use crypto::digest::Digest;
 use crypto::mac::Mac;
 use crypto::sha2::Sha256;
 use crypto::hmac::Hmac;
-
-pub mod util;
-pub mod http;
-pub mod auth;
-pub mod s3;
+mod status;
+mod util;
+mod http;
+mod auth;
+mod s3;
 
 fn hmac(key: &[u8], data: &[u8]) -> Vec<u8> {
   let mut m = Hmac::new(Sha256::new(), key);
@@ -97,7 +97,7 @@ impl Request {
       Err(e) => Err(format!("{}", e)),
       Ok(resp) => {
         match resp.status_code {
-          http::status::Ok => Ok(Response { body: resp.body.unwrap_or_else(|| Vec::new()) }),
+          HttpOK => Ok(Response { body: resp.body.unwrap_or_else(|| Vec::new()) }), // TODO: fix 200
           code => Err(format!("HTTP Error: {}", code))
         }
       }
