@@ -62,7 +62,7 @@ impl Request {
       "{}\n{}\n{}\nhost:{}\nx-amz-content-sha256:{}\nx-amz-date:{}\n\nhost;x-amz-content-sha256;x-amz-date\n{}",
       self.method,
       self.url.path.path,
-      url::query_to_str(&self.url.path.query),
+      self.url.path.query,
       self.url.host, content_hash, full_date,
       content_hash
     );
