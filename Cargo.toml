@@ -17,3 +17,6 @@ git = "https://github.com/DaGenix/rust-crypto"
 
 [dependencies.RustyXML]
 git = "https://github.com/Florob/RustyXML"
+
+[dependencies.time]
+rev = "da2a5e65e3acd945"

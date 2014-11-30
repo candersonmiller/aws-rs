@@ -5,7 +5,7 @@ extern crate time;
 extern crate serialize;
 extern crate url;
 extern crate curl;
-extern crate crypto = "rust-crypto";
+extern crate "rust-crypto" as crypto;
 extern crate xml;
 
 use std::str;
