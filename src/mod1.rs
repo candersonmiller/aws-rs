@@ -4,6 +4,7 @@ use std::str;
 use std::collections::HashMap;
 use url;
 use curl;
+use std::fmt::Error;
 
 use status;
 
@@ -16,7 +17,7 @@ pub enum Method {
 }
 
 impl fmt::Show for Method {
-  fn fmt(&self, f: &mut fmt::Formatter) -> Result<(), fmt::FormatError> {
+  fn fmt(&self, f: &mut fmt::Formatter) -> Result<(), Error> {
     match *self {
       Head => write!(f, "HEAD"),
       Get => write!(f, "GET"),
@@ -57,7 +58,7 @@ impl Request {
 }
 
 impl fmt::Show for Request {
-  fn fmt(&self, f: &mut fmt::Formatter) -> Result<(), fmt::FormatError> {
+  fn fmt(&self, f: &mut fmt::Formatter) -> Result<(), Error> {
     try!(writeln!(f, "{} {} HTTP/1.1", self.method, self.url.path));
     for (k,v) in self.headers.iter() {
       try!(writeln!(f, "{}: {}", k, v));
