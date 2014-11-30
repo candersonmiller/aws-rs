@@ -18,6 +18,7 @@ use crypto::hmac::Hmac;
 mod status;
 mod util;
 mod auth;
+mod mod1;
 mod s3;
 
 fn hmac(key: &[u8], data: &[u8]) -> Vec<u8> {
@@ -40,8 +41,8 @@ trait ToRequest {
 
 struct Request {
   url: url::Url,
-  method: http::Method,
-  body: http::EntityBody,
+  method: mod1::Method,
+  body: mod1::EntityBody,
   region: String,
   credentials: auth::Credentials
 }

@@ -5,7 +5,7 @@ use std::collections::HashMap;
 use url;
 use curl;
 
-mod status;
+use status;
 
 pub enum Method {
   Head,
@@ -50,7 +50,7 @@ impl Request {
     };
     let resp = try!(req.exec().map_err(|e| format!("HTTP request error: {}", e)));
     Ok(Response {
-      status_code: num::FromPrimitive::from_uint(resp.get_code()).unwrap_or((status::InternalServerError)),
+      status_code: num::FromPrimitive::from_uint(resp.get_code()).unwrap_or((status::StatusCode::InternalServerError)),
       body: Some(resp.get_body().to_owned())
     })
   }
