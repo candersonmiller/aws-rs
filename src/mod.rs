@@ -5,7 +5,7 @@ use std::collections::HashMap;
 use url;
 use curl;
 
-pub mod status;
+mod status;
 
 pub enum Method {
   Head,

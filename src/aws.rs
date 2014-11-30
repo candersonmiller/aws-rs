@@ -17,7 +17,6 @@ use crypto::sha2::Sha256;
 use crypto::hmac::Hmac;
 mod status;
 mod util;
-mod http;
 mod auth;
 mod s3;
 
@@ -86,7 +85,7 @@ impl Request {
     headers.insert("x-amz-date".to_string(), full_date.clone());
     headers.insert("Authorization".to_string(), auth_header.clone());
 
-    let http_request = http::Request {
+    let http_request = Request {
       method: self.method,
       url: self.url.clone(),
       headers: headers,

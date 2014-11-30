@@ -3,7 +3,7 @@ name = "aws"
 version = "0.0.0"
 authors = [ "https://github.com/samyatchmenoff" ]
 
-[[lib]]
+[lib]
 name = "aws"
 
 [[bin]]

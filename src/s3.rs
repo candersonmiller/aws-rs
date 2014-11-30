@@ -1,7 +1,7 @@
 use std::num;
 use std::result;
 use url;
-use super::{http, auth, Request, ToRequest, Response, FromResponse};
+use super::{auth, Request, ToRequest, Response, FromResponse};
 use super::util::TryUnwrap;
 use xml;
 
@@ -68,7 +68,7 @@ impl ToRequest for ListBucketsRequest {
           fragment: None
         }
       },
-      method: http::Get,
+      method: self.Get,
       body: Vec::new(),
       region: "us-east-1".to_string(),
       credentials: credentials
@@ -121,7 +121,7 @@ impl ToRequest for ListObjectsRequest {
           fragment: None
         }
       },
-      method: http::Get,
+      method: self.Get,
       body: Vec::new(),
       region: "us-east-1".to_string(),
       credentials: credentials
@@ -188,7 +188,7 @@ impl ToRequest for GetObjectRequest {
           fragment: None
         }
       },
-      method: http::Get,
+      method: self.Get,
       body: Vec::new(),
       region: "us-east-1".to_string(),
       credentials: credentials
