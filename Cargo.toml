@@ -5,9 +5,7 @@ authors = [ "https://github.com/samyatchmenoff" ]
 
 [lib]
 name = "aws"
-
-[[bin]]
-name = "aws"
+source = "src/aws.rs"
 
 [dependencies.curl]
 git = "https://github.com/carllerche/curl-rust"
@@ -20,3 +18,7 @@ git = "https://github.com/Florob/RustyXML"
 
 [dependencies.time]
 rev = "da2a5e65e3acd945"
+
+[dependencies.url]
+git = "https://github.com/servo/rust-url"
+features = ["query_encoding"]

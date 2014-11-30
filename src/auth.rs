@@ -1,7 +1,9 @@
 use std::os;
 
+
 pub enum Credentials {
-  BasicCredentials(String, String)
+  BasicCredentials(String, String),
+  NoCredentials,
 }
 
 impl<'r> Credentials {

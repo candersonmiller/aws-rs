@@ -1,9 +1,11 @@
 extern crate url;
 extern crate aws;
 
+use url::{Url, ParseError};
 use std::os;
 use std::str;
 use std::io;
+
 
 fn print_help(prog: &str) {
   println!("Usage:");
@@ -12,7 +14,7 @@ fn print_help(prog: &str) {
 }
 
 fn cmd_s3_cat(args: &[&str]) {
-  let url = url::from_str(args[0]).unwrap();
+  let url = Url::parse(args[0]).unwrap();
   if !url.scheme.equiv(&"s3") {
     writeln!(io::stderr(), "URL must use 's3' scheme");
     return;
@@ -51,9 +53,9 @@ fn main() {
   let args = os::args();
   let mapped_args: Vec<&str> = args.as_slice().iter().map(|s| s.as_slice()).collect();
   match mapped_args.as_slice() {
-    [_, "s3", "ls", .. tail] => cmd_s3_ls(tail),
-    [_, "s3", "cat", .. tail] => cmd_s3_cat(tail),
-    [prog, ..] => print_help(prog),
-    _ => print_help("aws")
+     [_, "s3", "ls", tail .. ] => cmd_s3_ls(tail),
+     [_, "s3", "cat", tail .. ] => cmd_s3_cat(tail),
+     [prog, ..] => print_help(prog),
+     _ => print_help("aws")
   };
 }

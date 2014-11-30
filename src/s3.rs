@@ -62,11 +62,9 @@ impl ToRequest for ListBucketsRequest {
         user: None,
         host: "s3.amazonaws.com".to_string(),
         port: None,
-        path: url::Path {
-          path: "/".to_string(),
-          query: Vec::new(),
-          fragment: None
-        }
+        path: "/".to_string(),
+        query: Vec::new(),
+        fragment: None
       },
       method: self.Get,
       body: Vec::new(),
@@ -115,11 +113,9 @@ impl ToRequest for ListObjectsRequest {
         user: None,
         host: "s3.amazonaws.com".to_string(),
         port: None,
-        path: url::Path {
-          path: format!("/{}", self.bucket_name),
-          query: params,
-          fragment: None
-        }
+        path: format!("/{}", self.bucket_name),
+        query: params,
+        fragment: None
       },
       method: self.Get,
       body: Vec::new(),
@@ -182,11 +178,9 @@ impl ToRequest for GetObjectRequest {
         user: None,
         host: "s3.amazonaws.com".to_string(),
         port: None,
-        path: url::Path {
-          path: format!("/{}/{}", self.bucket_name, self.key),
-          query: Vec::new(),
-          fragment: None
-        }
+        path: format!("/{}/{}", self.bucket_name, self.key),
+        query: Vec::new(),
+        fragment: None
       },
       method: self.Get,
       body: Vec::new(),
